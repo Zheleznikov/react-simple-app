@@ -1,32 +1,43 @@
-import React, { Component } from 'react';
+import React from "react";
 
-class Table extends Component {
-  render() {
+const TableHeader = () => {
+  return (
+    <thead>
+      <tr>
+        <th>Герой</th>
+        <th>Супер-сила</th>
+        <th>Удалить</th>
+      </tr>
+    </thead>
+  );
+};
+
+const TableBody = (props) => {
+  const rows = props.characterData.map((row, index) => {
     return (
-      <table>
-        <thead>
-          <tr>
-            <th>Персонаж</th>
-            <th>Супер-способность</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Чарли</td>
-            <td>Не пердит</td>
-          </tr>
-          <tr>
-            <td>Олег</td>
-            <td>Пьет и не пьянеет</td>
-          </tr>
-          <tr>
-            <td>Мустафа</td>
-            <td>Разводзит продукты пенсионерам</td>
-          </tr>
-        </tbody>
-      </table>
-    )
-  }
-}
+      <tr key={index}>
+        <td>{row.name}</td>
+        <td>{row.power}</td>
+        <td>
+          <button onClick={() => props.removeCharacter(index)}>удалить</button>
+        </td>
+      </tr>
+    );
+  });
+  return <tbody>{rows}</tbody>;
+};
 
-export default Table
+const Table = (props) => {
+  const { characterData, removeCharacter } = props;
+  return (
+    <table>
+      <TableHeader />
+      <TableBody
+        characterData={characterData}
+        removeCharacter={removeCharacter}
+      />
+    </table>
+  );
+};
+
+export default Table;
