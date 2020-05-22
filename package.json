@@ -1,6 +1,6 @@
 {
   "name": "simple-app",
-  "hompage": "https://zheleznikov.github.io/react-simple-app",
+  "homepage": "https://zheleznikov.github.io/react-simple-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
